@@ -75,3 +75,27 @@ class Doctor(Person):
         d["extra_fee_percent"] = self.extra_fee_percent
         d["schedule"] = self.schedule
         return d
+class Appointment:
+    def __init__(self, aid, patient_id, doctor_id, date_str, reason="", status="Pending"):
+        self.id = aid
+        self.patient_id = patient_id
+        self.doctor_id = doctor_id
+        self.datetime = date_str
+        self.reason = reason
+        self.status = status
+        self.notes = []
+        self.invoice_id = None
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "patient_id": self.patient_id,
+            "doctor_id": self.doctor_id,
+            "datetime": self.datetime,
+            "reason": self.reason,
+            "status": self.status,
+            "notes": self.notes,
+            "invoice_id": self.invoice_id
+        }
+
+
